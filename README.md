@@ -28,6 +28,6 @@ cd build
 
 ### Contacts
 
-Korney Ivanishin, author of the project
+#### Korney Ivanishin, author of the project
 E-mail: korney059@gmail.com,
 GitHub: [quaiion](https://github.com/quaiion), Telegram: @quaiion
