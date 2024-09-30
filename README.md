@@ -13,8 +13,8 @@ apt install clang libsdl2-dev -y
 
 *(Don't forget your* `sudo`*...)*
 
-- I used the *14.0.0-1ubuntu1.1* version of clang but this would probably work with any more-or-less modern version
-- *2.0.20* version of libSDL was used
+- I used the **14.0.0-1ubuntu1.1** version of clang but this would probably work with any more-or-less modern version
+- **2.0.20** version of libSDL was used
 
 ### Building the app
 
