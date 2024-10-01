@@ -2,7 +2,7 @@
 
 ### Description
 
-A dummy for exploring the LLVM and a kind of a time-killer... I guess.
+A dummy for exploring the LLVM and a kind of a wallpaper... I guess.
 
 ### Dependencies
 

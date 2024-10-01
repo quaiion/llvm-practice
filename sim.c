@@ -33,9 +33,6 @@ sim_is_quit() {
 
 void
 sim_flush() {
-        SDL_PumpEvents();
-        assert(SDL_HasEvent(SDL_QUIT) != SDL_TRUE);
-
         Uint32 frame_ticks = SDL_GetTicks() - frame_tickstamp;
         if (frame_ticks < TICKS_PER_FRAME) {
                 SDL_Delay(TICKS_PER_FRAME - frame_ticks);
