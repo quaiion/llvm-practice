@@ -21,13 +21,13 @@ apt install clang libsdl2-dev -y
 Standard build:
 
 ```bash
-clang launch.c sim.c entropy.c -lSDL2 -o build/entropy -w
+clang app/launch.c app/sim.c app/entropy.c -lSDL2 -o build/entropy -w
 ```
 
 Generate an .ll LLVM IR file for entropy.c (a module containing app's core logic):
 
 ```bash
-clang entropy.c -emit-llvm -S -O2
+clang app/entropy.c -emit-llvm -S -O2 -o tech_files/entropy.ll
 ```
 
 ### Launching the app
