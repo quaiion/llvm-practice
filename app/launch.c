@@ -1,6 +1,6 @@
 #include "sim.h"
 
-// void app();
+void app();
 
 int
 main() {

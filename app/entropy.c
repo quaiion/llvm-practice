@@ -9,16 +9,20 @@
 #define COLLISION 1
 #define TRANQUIL 0
 
-static int lin_idx(int, int);
-static void init_pos_mtx(int []);
-static void set_rand_motion(int, int [], int [], int []);
-static void init_arrs(int [], int [], int []);
-static void init_coll_mtx(int []);
-static void empty_pos_mtx(int []);
-static void swap_ptrs(int **, int **);
-static void calculate_frame(int [], int [], int [], int [], int [],
-                            int [], int [], int [], int []);
-static void draw_frame(int [], int []);
+static int lin_idx(int x, int y);
+static void init_pos_mtx(int pos_mtx[]);
+static void set_rand_motion(int id, int vel_arr[], int del_arr[],
+                            int dir_arr[]);
+static void init_arrs(int vel_arr[], int del_arr[], int dir_arr[]);
+static void init_coll_mtx(int coll_mtx[]);
+static void empty_pos_mtx(int pos_mtx[]);
+static void swap_ptrs(int **ptr_1, int **ptr_2);
+static void calculate_frame(int old_pos_mtx[], int new_pos_mtx[],
+                            int x_vel_arr[], int y_vel_arr[],
+                            int x_del_arr[], int y_del_arr[],
+                            int x_dir_arr[], int y_dir_arr[],
+                            int coll_mtx[]);
+static void draw_frame(int pos_mtx[], int coll_mtx[]);
 void app();
 
 static int
@@ -88,10 +92,10 @@ swap_ptrs(int **ptr_1, int **ptr_2) {
 
 static void
 calculate_frame(int old_pos_mtx[], int new_pos_mtx[],
-                            int x_vel_arr[], int y_vel_arr[],
-                            int x_del_arr[], int y_del_arr[],
-                            int x_dir_arr[], int y_dir_arr[],
-                            int coll_mtx[]) {
+                int x_vel_arr[], int y_vel_arr[],
+                int x_del_arr[], int y_del_arr[],
+                int x_dir_arr[], int y_dir_arr[],
+                int coll_mtx[]) {
         for (int x = 0; x < SIM_X_SIZE; ++x) {
                 for (int y = 0; y < SIM_Y_SIZE; ++y) {
                         int proj = old_pos_mtx[lin_idx(x, y)];

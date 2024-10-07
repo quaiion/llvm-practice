@@ -1,3 +1,5 @@
+#pragma once
+
 #define SIM_X_SIZE 600
 #define SIM_Y_SIZE 400
 #define TICKS_PER_FRAME 20
