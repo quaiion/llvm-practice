@@ -9,13 +9,14 @@ A dummy for exploring the LLVM and a kind of a wallpaper... I guess.
 ```bash
 apt update
 apt install clang libsdl2-dev llvm python3 -y
+python -m pip install -U matplotlib
 ```
 
-*(Don't forget your* `sudo`*...)*
+*(For* ***apt*** *don't forget your* `sudo` *and for* ***pip*** *consider using a* ***Python virtual environment*** *...)*
 
 - I used the **14.0.0-1ubuntu1.1** version of CLang/LLVM with a fresh (non-legacy) pass manager
 - **2.0.20** version of libSDL was used
-- **3.10.12** version of Python was used
+- **3.10.12** version of Python with Matplotlib **3.9.2** onboard was used
 
 ### Building the app
 
@@ -49,14 +50,14 @@ cd build
 ./entropy
 ```
 
-If you want the logs to be properly recorded to a separate file:
+If you want the instruction logs to be properly recorded to a separate file:
 
 ```bash
 cd build
 ./entropy > data/logs.dat
 ```
 
-To collect the statistics from the log file:
+To collect the instruction statistics from the log file:
 
 ```bash
 python3 src/analysis/instr_log_stat.py
@@ -66,6 +67,12 @@ python3 src/analysis/instr_log_stat.py
 
 ```bash
 python3 src/analysis/instr_log_stat.py > data/stat.dat
+```
+
+To visualize the instruction statistics as a bar-graph:
+
+```bash
+python3 src/analysis/plot_instr_log_stat.py
 ```
 
 ### Contacts

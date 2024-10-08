@@ -3,3 +3,5 @@ build/**
 data/**
 !data/.gitkeep
 !data/stat.dat
+!data/png
+!data/png/**
