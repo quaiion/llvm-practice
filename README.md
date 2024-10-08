@@ -8,13 +8,14 @@ A dummy for exploring the LLVM and a kind of a wallpaper... I guess.
 
 ```bash
 apt update
-apt install clang libsdl2-dev llvm -y
+apt install clang libsdl2-dev llvm python3 -y
 ```
 
 *(Don't forget your* `sudo`*...)*
 
 - I used the **14.0.0-1ubuntu1.1** version of CLang/LLVM with a fresh (non-legacy) pass manager
 - **2.0.20** version of libSDL was used
+- **3.10.12** version of Python was used
 
 ### Building the app
 
@@ -53,6 +54,18 @@ If you want the logs to be properly recorded to a separate file:
 ```bash
 cd build
 ./entropy > data/logs.dat
+```
+
+To collect the statistics from the log file:
+
+```bash
+python3 src/analysis/instr_log_stat.py
+```
+
+*or*
+
+```bash
+python3 src/analysis/instr_log_stat.py > data/stat.dat
 ```
 
 ### Contacts
