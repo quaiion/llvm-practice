@@ -23,38 +23,53 @@ struct log_pass : public PassInfoMixin<log_pass> {
                         Type *logger_ret_type = Type::getVoidTy(ctx);
 
                         /** prepare the instruction logger function */
-                        ArrayRef<Type *> instr_logger_param_types = { builder.getInt8Ty()->getPointerTo() };
-                        FunctionType *instr_logger_func_type = FunctionType::get(logger_ret_type, instr_logger_param_types, false);
-                        FunctionCallee instr_logger_func = M.getOrInsertFunction("instr_logger", instr_logger_func_type);
+                        ArrayRef<Type *> instr_logger_param_types = {
+                                builder.getInt8Ty()->getPointerTo() };
+                        FunctionType *instr_logger_func_type =
+                                FunctionType::get(logger_ret_type,
+                                                  instr_logger_param_types,
+                                                  false);
+                        FunctionCallee instr_logger_func =
+                                M.getOrInsertFunction("instr_logger",
+                                                      instr_logger_func_type);
 
                         /** insert instruction logger */
                         for (auto &B : F) {
                                 for (auto &I : B) {
                                         if (dyn_cast<PHINode>(&I) == nullptr) {
 
-                                                /** a failed attempt of inserting the logger AFTER the instruction */
+                                                /**
+                                                 * a failed attempt of inserting
+                                                 * the logger AFTER the 
+                                                 * nstruction
+                                                 */
 
                                                 // builder.SetInsertPoint(&I);
                                                 // builder.SetInsertPoint(&B, ++builder.GetInsertPoint());
 
                                                 // if (auto *call = dyn_cast<CallInst>(&I)) {
-                                                //         Function *callee = call->getCalledFunction();
-                                                //         if (!callee || is_logger_func(callee->getName())) {
+                                                //         Function *callee =
+                                                //                 call->getCalledFunction();
+                                                //         if (!callee ||
+                                                //             is_logger_func(callee->getName())) {
                                                 //                 continue;
                                                 //         }
                                                 // }
 
-                                                // Value *op_name = builder.CreateGlobalStringPtr(I.getOpcodeName());
+                                                // Value *op_name =
+                                                //         builder.CreateGlobalStringPtr(I.getOpcodeName());
                                                 // Value *args[] = { op_name };
                                                 // builder.CreateCall(instr_logger_func, args);
 
-                                                /** -------------------------------------------------------------- */
+                                                /** --------------------------- */
 
                                                 builder.SetInsertPoint(&I);
 
-                                                Value *op_name = builder.CreateGlobalStringPtr(I.getOpcodeName());
+                                                Value *op_name =
+                                                        builder.CreateGlobalStringPtr(I.getOpcodeName());
                                                 Value *args[] = { op_name };
-                                                builder.CreateCall(instr_logger_func, args);
+                                                builder.CreateCall(instr_logger_func,
+                                                                   args);
                                         }
                                 }
                         }
@@ -66,7 +81,9 @@ struct log_pass : public PassInfoMixin<log_pass> {
 
 PassPluginLibraryInfo getPassPluginInfo() {
         const auto callback = [](PassBuilder &PB) {
-                PB.registerPipelineParsingCallback([](StringRef name, ModulePassManager &MPM, auto) {
+                PB.registerPipelineParsingCallback([](StringRef name,
+                                                      ModulePassManager &MPM,
+                                                      auto) {
                         if (name == "log_pass") {
                                 MPM.addPass(log_pass{});
                                 return true;
