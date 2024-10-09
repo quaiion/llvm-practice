@@ -41,7 +41,7 @@ struct log_pass : public PassInfoMixin<log_pass> {
                                                 /**
                                                  * a failed attempt of inserting
                                                  * the logger AFTER the 
-                                                 * nstruction
+                                                 * instruction
                                                  */
 
                                                 // builder.SetInsertPoint(&I);

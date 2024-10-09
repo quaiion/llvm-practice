@@ -57,7 +57,7 @@ cd build
 ./entropy > data/logs.dat
 ```
 
-To collect the instruction statistics from the log file:
+To collect instruction statistics from the log file:
 
 ```bash
 python3 src/analysis/instr_log_stat.py
@@ -72,7 +72,7 @@ python3 src/analysis/instr_log_stat.py > data/stat.dat
 To visualize the instruction statistics as a bar-graph:
 
 ```bash
-python3 src/analysis/plot_instr_log_stat.py
+python3 src/analysis/plot_instr_stat.py
 ```
 
 ### Contacts
